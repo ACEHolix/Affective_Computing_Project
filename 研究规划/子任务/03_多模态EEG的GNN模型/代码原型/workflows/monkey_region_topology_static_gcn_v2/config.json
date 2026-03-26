@@ -1,0 +1,28 @@
+{
+  "name": "monkey_region_topology_static_gcn_v2",
+  "description": "Region-topology static GCN baseline with ECoG pooled as one node and deep LFP channels grouped by brain area.",
+  "ssh_target": "tuoxiaoying@100.92.221.123",
+  "monkey_repo": "/home/tuoxiaoying/Documents/Pyproject/Monkey_reward",
+  "data_root": "/home/tuoxiaoying/Documents/Pyproject/Monkey_reward/Preprocessed Data",
+  "output_root": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs",
+  "remote_dataset_cache": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs/monkey_region_topology_static_gcn_v2/dataset_cache",
+  "remote_experiment_root": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs/monkey_region_topology_static_gcn_v2/experiments",
+  "dates": [
+    "20250318",
+    "20250502"
+  ],
+  "task": "5cls",
+  "variant": "window",
+  "num_nodes": 5,
+  "node_feature_dim": 5,
+  "num_classes": 5,
+  "train": {
+    "batch_size": 32,
+    "epochs": 20,
+    "hidden_dim": 64,
+    "learning_rate": 0.001,
+    "dropout": 0.3,
+    "val_ratio": 0.2,
+    "seed": 42
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "monkey_single_eeg_static_gcn",
+  "description": "Connect Monkey_reward preprocessed date-level EEG data to the single-modality static GCN baseline.",
+  "ssh_target": "tuoxiaoying@100.92.221.123",
+  "monkey_repo": "/home/tuoxiaoying/Documents/Pyproject/Monkey_reward",
+  "data_root": "/home/tuoxiaoying/Documents/Pyproject/Monkey_reward/Preprocessed Data",
+  "output_root": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs",
+  "remote_dataset_cache": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs/monkey_single_eeg_static_gcn/dataset_cache",
+  "remote_experiment_root": "/media/tuoxiaoying/DATA/Tuo/Pyproject/Monkey_reward/outputs/monkey_single_eeg_static_gcn/experiments",
+  "dates": [
+    "20250318",
+    "20250502"
+  ],
+  "task": "5cls",
+  "variant": "window",
+  "channels": 58,
+  "window_len": 1000,
+  "num_classes": 5,
+  "baseline_model": "single_eeg_static_gcn",
+  "train": {
+    "batch_size": 32,
+    "epochs": 20,
+    "hidden_dim": 64,
+    "learning_rate": 0.001,
+    "dropout": 0.3,
+    "val_ratio": 0.2,
+    "seed": 42
+  }
+}

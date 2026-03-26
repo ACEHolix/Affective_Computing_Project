@@ -1,0 +1,17 @@
+seed: 42
+
+data:
+  eeg_nodes: 32
+  eeg_feat_dim: 5
+  phy_nodes: 3
+  phy_feat_dim: 4
+  num_classes: 3
+
+model:
+  hidden_dim: 64
+  dropout: 0.3
+
+train:
+  batch_size: 16
+  learning_rate: 0.001
+  num_epochs: 50

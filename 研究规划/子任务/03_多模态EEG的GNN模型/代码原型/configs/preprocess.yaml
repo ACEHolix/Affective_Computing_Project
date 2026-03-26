@@ -1,0 +1,37 @@
+window:
+  length_seconds: 4
+  step_seconds: 2
+
+modalities:
+  eeg: true
+  ecg: true
+  resp: true
+  eda: true
+
+features:
+  eeg:
+    - delta_power
+    - theta_power
+    - alpha_power
+    - beta_power
+    - gamma_power
+  ecg:
+    - heart_rate
+    - rmssd
+    - sdnn
+    - lf_hf
+  resp:
+    - resp_rate
+    - amp_mean
+    - amp_std
+    - cycle_mean
+  eda:
+    - tonic_mean
+    - phasic_mean
+    - scr_count
+    - scr_amp
+
+graph:
+  eeg_adjacency: spatial
+  phy_adjacency: fully_connected
+  cross_adjacency: eeg_to_all_phy

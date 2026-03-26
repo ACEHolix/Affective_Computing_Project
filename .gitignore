@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Local generated artifacts
+研究规划/子任务/03_多模态EEG的GNN模型/代码原型/workflows/*/results/
+研究规划/子任务/03_多模态EEG的GNN模型/代码原型/data/monkey_reward_manifest.json

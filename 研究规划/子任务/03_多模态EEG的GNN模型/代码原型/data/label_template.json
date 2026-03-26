@@ -1,0 +1,24 @@
+{
+  "subject_id": "sub01",
+  "trial_id": "trial01",
+  "window_labels": [
+    {
+      "window_id": 0,
+      "start_time": 0.0,
+      "end_time": 4.0,
+      "class_label": 0,
+      "class_name": "negative",
+      "valence": 0.25,
+      "arousal": 0.68
+    },
+    {
+      "window_id": 1,
+      "start_time": 2.0,
+      "end_time": 6.0,
+      "class_label": 1,
+      "class_name": "neutral",
+      "valence": 0.51,
+      "arousal": 0.49
+    }
+  ]
+}
