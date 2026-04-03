@@ -11,7 +11,7 @@
 - 访问地址：
   - `http://100.81.1.116`
   - `http://100.81.1.116/survey`
-  - `http://100.81.1.116/admin`
+- `http://100.81.1.116/admin`
   - `http://100.81.1.116:3000`
   - `http://100.81.1.116:3000/survey`
 
@@ -26,6 +26,10 @@
 当前 nginx 已配置反向代理：
 
 - `80` 端口 -> `127.0.0.1:3000`
+
+当前管理员页已增加 Basic Auth：
+
+- 访问 `/admin` 和 `/admin/*` 前，需要先配置 `ADMIN_USERNAME` 与 `ADMIN_PASSWORD`
 
 提交结果保存目录：
 
@@ -81,6 +85,8 @@ Type=simple
 WorkingDirectory=/home/tuoxiaoying/deploy/subtask01-survey
 Environment=NODE_ENV=production
 Environment=PORT=3000
+Environment=ADMIN_USERNAME=admin
+Environment=ADMIN_PASSWORD=change-this-password
 Environment=PATH=/home/tuoxiaoying/.nvm/versions/node/v24.12.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ExecStart=/home/tuoxiaoying/.nvm/versions/node/v24.12.0/bin/npm run start
 Restart=always
@@ -113,6 +119,30 @@ ssh tuoxiaoying@100.81.1.116 'systemctl --user status subtask01-survey --no-page
 
 ```bash
 ssh tuoxiaoying@100.81.1.116 'sudo systemctl status nginx --no-pager'
+```
+
+### 修改管理员账号密码
+
+编辑远端用户级 service：
+
+```bash
+ssh -tt tuoxiaoying@100.81.1.116 'systemctl --user edit --full subtask01-survey'
+```
+
+把下面两行改成你自己的值：
+
+```ini
+Environment=ADMIN_USERNAME=admin
+Environment=ADMIN_PASSWORD=change-this-password
+```
+
+保存后重载并重启：
+
+```bash
+ssh -tt tuoxiaoying@100.81.1.116 '
+  systemctl --user daemon-reload &&
+  systemctl --user restart subtask01-survey
+'
 ```
 
 ### 重启服务
@@ -188,6 +218,12 @@ curl -I http://100.81.1.116:3000/survey
 curl -I http://100.81.1.116/admin
 ```
 
+如果管理员鉴权已开启，应该返回 `401 Unauthorized`。带上账号密码测试：
+
+```bash
+curl -I -u admin:change-this-password http://100.81.1.116/admin
+```
+
 ### 检查转换接口是否可用
 
 ```bash
@@ -257,6 +293,22 @@ export PATH=/home/tuoxiaoying/.nvm/versions/node/v24.12.0/bin:$PATH
 
 - `~/deploy/subtask01-survey/data/submissions/` 是否存在
 - 当前用户是否有写权限
+
+### 3. `/admin` 返回 503
+
+原因：
+
+- 远端没有配置 `ADMIN_USERNAME` 或 `ADMIN_PASSWORD`
+
+解决：
+
+- 在 `subtask01-survey.service` 里增加这两个 `Environment=...`
+- 然后执行：
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart subtask01-survey
+```
 
 修复：
 

@@ -13,6 +13,7 @@
 - 首页说明页
 - 多步骤正式版问卷
 - 管理员页面，可查看提交结果
+- `/admin` 已支持 Basic Auth 鉴权
 - 单选、多选、评分、矩阵评分、文本题
 - 浏览器本地自动保存
 - 提交后导出 JSON
@@ -30,6 +31,23 @@ npm run dev
 默认地址：
 
 - `http://localhost:3000`
+
+如果要访问管理员页面，需要先配置环境变量：
+
+```bash
+cp .env.example .env.local
+```
+
+最少配置：
+
+```bash
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=change-this-password
+```
+
+管理员页面地址：
+
+- `http://localhost:3000/admin`
 
 ## 构建验证
 
