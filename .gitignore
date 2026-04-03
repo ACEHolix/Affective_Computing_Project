@@ -1,7 +1,23 @@
 .DS_Store
 __pycache__/
 *.pyc
+.env
+.env.local
+.env.*.local
+
+# Frontend / Node.js
+node_modules/
+.next/
+dist/
+build/
+
+# macOS / editor
+.idea/
+.vscode/
 
 # Local generated artifacts
 研究规划/子任务/03_多模态EEG的GNN模型/代码原型/workflows/*/results/
 研究规划/子任务/03_多模态EEG的GNN模型/代码原型/data/monkey_reward_manifest.json
+
+# Survey site local data
+研究规划/子任务/01_情感标签到AI视频/问卷网站/data/submissions/
