@@ -30,6 +30,8 @@
 当前管理员页已增加 Basic Auth：
 
 - 访问 `/admin` 和 `/admin/*` 前，需要先配置 `ADMIN_USERNAME` 与 `ADMIN_PASSWORD`
+- 当前管理员账号：`yakuri`
+- 当前管理员密码：`yakuri5504`
 
 提交结果保存目录：
 
